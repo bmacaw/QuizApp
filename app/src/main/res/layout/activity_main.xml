@@ -169,7 +169,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
     <TextView
-        android:text="TextView"
+        android:text="@string/question_5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/question_5_text_view" />
@@ -177,10 +177,17 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="0"
+        android:inputType="textMultiLine"
+        android:hint="@string/question_5_text_field_hint"
         android:ems="10"
         android:id="@+id/answer_5_edit_text" />
+
+        <Button
+            android:text="@string/submit_answers_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="submitAnswers"
+            android:id="@+id/submit_answers" />
     </LinearLayout>
 
 
