@@ -19,13 +19,12 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     /*This app displays a quiz about octopuses*/
 
-    int correctAnswers = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
 
     // This method is called when the submit_answers button is clicked
     public void submitAnswers(View view) {
@@ -71,8 +70,84 @@ public class MainActivity extends AppCompatActivity {
         EditText ansFiveInput = (EditText) findViewById(R.id.answer_5_edit_text);
         String ansFiveUserInput = ansFiveInput.getText().toString();
 
+
         int totalScore = (checkQuestionOne(ansOnePickedTrue) + checkQuestionTwo(ansTwoPickedChoiceThree) + checkQuestionThree(ansThreePickedChoiceTwo, ansFourPickedChoiceThree) + checkQuestionFour(ansFourPickedChoiceOne, ansFourPickedChoiceTwo, ansFourPickedChoiceThree, ansFourPickedChoiceFour) + checkQuestionFive(ansFiveUserInput));
         Toast.makeText(this, "You got " + totalScore + " out of 5 right!", Toast.LENGTH_LONG).show();
+    }
+
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+        // Check which checkbox was clicked
+        switch (view.getId()) {
+            case R.id.answer_3_choice_1:
+                if (checked) {
+                    // What to do
+                    Toast.makeText(this, "#3 Choice One is checked!", Toast.LENGTH_SHORT).show();
+                }
+
+            case R.id.answer_3_choice_2:
+                if (checked) {
+                    // What to do
+                    Toast.makeText(this, "#3 Choice Two is checked!", Toast.LENGTH_SHORT).show();
+                    //else
+                    // What else to do
+                    break;
+                }
+            case R.id.answer_3_choice_3:
+                if (checked) {
+                    // What to do
+                    Toast.makeText(this, "#3 Choice Three is checked!", Toast.LENGTH_SHORT).show();
+                    //else
+                    // What else to do
+                    break;
+                }
+            case R.id.answer_3_choice_4:
+                if (checked) {
+                    // What to do
+                    Toast.makeText(this, "#3 Choice Four is checked!", Toast.LENGTH_SHORT).show();
+                    //else
+                    // What else to do
+                    break;
+                }
+                // TODO:
+        }
+
+        // Check which checkbox was clicked
+        switch (view.getId()) {
+            case R.id.answer_4_choice_1:
+                if (checked) {
+                    // What to do
+                    Toast.makeText(this, "#4 Choice One is checked!", Toast.LENGTH_SHORT).show();
+                    //else
+                    // What else to do
+                    break;
+                }
+            case R.id.answer_4_choice_2:
+                if (checked) {
+                    // What to do
+                    Toast.makeText(this, "#4 Choice Two is checked!", Toast.LENGTH_SHORT).show();
+                    //else
+                    // What else to do
+                    break;
+                }
+            case R.id.answer_4_choice_3:
+                if (checked) {
+                    // What to do
+                    Toast.makeText(this, "#4 Choice three is checked!", Toast.LENGTH_SHORT).show();
+                    //else
+                    // What else to do
+                    break;
+                }
+            case R.id.answer_4_choice_4:
+                if (checked) {
+                    // What to do
+                    Toast.makeText(this, "#4 Choice Four is checked!", Toast.LENGTH_SHORT).show();
+                    //else
+                    // What else to do
+                    break;
+                }
+        }
     }
 
     private int checkQuestionOne(boolean pickedTrue) {
@@ -116,6 +191,4 @@ public class MainActivity extends AppCompatActivity {
     private void createScoreMessage(int score) {
 
     }
-
 }
-

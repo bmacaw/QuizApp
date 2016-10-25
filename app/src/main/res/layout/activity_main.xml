@@ -108,25 +108,29 @@
             android:text="@string/answer_3_choice_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_3_choice_1" />
+            android:id="@+id/answer_3_choice_1"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:text="@string/answer_3_choice_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_3_choice_2" />
+            android:id="@+id/answer_3_choice_2"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:text="@string/answer_3_choice_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_3_choice_3" />
+            android:id="@+id/answer_3_choice_3"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:text="@string/answer_3_choice_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_3_choice_4" />
+            android:id="@+id/answer_3_choice_4"
+            android:onClick="onCheckboxClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -137,31 +141,36 @@
             android:text="@string/question_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/question_4_text_view" />
+            android:id="@+id/question_4_text_view"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:text="@string/answer_4_choice_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_4_choice_1" />
+            android:id="@+id/answer_4_choice_1"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:text="@string/answer_4_choice_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_4_choice_2" />
+            android:id="@+id/answer_4_choice_2"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:text="@string/answer_4_choice_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_4_choice_3" />
+            android:id="@+id/answer_4_choice_3"
+            android:onClick="onCheckboxClicked"/>
 
         <CheckBox
             android:text="@string/answer_4_choice_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_4_choice_4" />
+            android:id="@+id/answer_4_choice_4"
+            android:onClick="onCheckboxClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -188,6 +197,7 @@
             android:layout_height="wrap_content"
             android:onClick="submitAnswers"
             android:id="@+id/submit_answers" />
+
     </LinearLayout>
 
 
