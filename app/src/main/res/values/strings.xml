@@ -19,7 +19,9 @@
     <string name="answer_4_choice_2">Choice 2</string>
     <string name="answer_4_choice_3">Choice 3</string>
     <string name="answer_4_choice_4">Choice 4</string>
-    <string name="question_5">Yawl Cat o\'nine tails cackle fruit shrouds case shot driver scallywag maroon keelhaul capstan?</string>
+    <string name="not_answer">Not this one!</string>
+    <string name="is_answer">Yup!</string>
+    <string name="question_5">Optional: What color would your pet octopus be??</string>
     <string name="question_5_text_field_hint">Spirits, ahoy, careen, etc.</string>
-    <string name="submit_answers_button_text">Check My Answers</string>
+    <string name="submit_answers_button_text">Check Me!</string>
 </resources>

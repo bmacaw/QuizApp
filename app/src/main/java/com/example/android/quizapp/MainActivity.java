@@ -1,10 +1,5 @@
 package com.example.android.quizapp;
 
-import android.content.Context;
-import android.content.Intent;
-import android.icu.text.NumberFormat;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,8 +7,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
     // This method is called when the submit_answers button is clicked
     public void submitAnswers(View view) {
+
+        // Create variables for all answers
         RadioButton ansOneTrue = (RadioButton) findViewById(R.id.answer_1_true);
         boolean ansOnePickedTrue = ansOneTrue.isChecked();
 
@@ -70,92 +64,92 @@ public class MainActivity extends AppCompatActivity {
         EditText ansFiveInput = (EditText) findViewById(R.id.answer_5_edit_text);
         String ansFiveUserInput = ansFiveInput.getText().toString();
 
-
+        // Total score
         int totalScore = (checkQuestionOne(ansOnePickedTrue)
                 + checkQuestionTwo(ansTwoPickedChoiceThree)
                 + checkQuestionThree(ansThreePickedChoiceTwo, ansThreePickedChoiceThree)
                 + checkQuestionFour(ansFourPickedChoiceOne,
-                ansFourPickedChoiceTwo, ansFourPickedChoiceThree, ansFourPickedChoiceFour)
-                + checkQuestionFive(ansFiveUserInput));
-        Toast.makeText(this, "You got " + totalScore + " out of 5 right!", Toast.LENGTH_LONG).show();
+                ansFourPickedChoiceTwo, ansFourPickedChoiceThree, ansFourPickedChoiceFour));
+        if (totalScore == 4) {
+            // Feedback message to user
+            Toast.makeText(this, "You got them all right, and a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
+        } else {
+            // Feedback message to user
+            Toast.makeText(this, "You missed " + (4 - totalScore) + " questions, " + "\nbut a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
+
+        }
+
+
     }
+
+    /*This switch sends Toasts to support the user for the Checkbox answers*/
 
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
-        // Check which checkbox was clicked
+        // Check which checkbox checkboxes are clicked for Question 3
         switch (view.getId()) {
             case R.id.answer_3_choice_1:
 
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, "#3 Choice One is checked!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.not_answer, Toast.LENGTH_SHORT).show();
+                    break;
                 }
 
             case R.id.answer_3_choice_2:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, "#3 Choice Two is checked!", Toast.LENGTH_SHORT).show();
-                    //else
-                    // What else to do
+                    Toast.makeText(this, R.string.is_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
             case R.id.answer_3_choice_3:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, "#3 Choice Three is checked!", Toast.LENGTH_SHORT).show();
-                    //else
-                    // What else to do
+                    Toast.makeText(this, R.string.is_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
             case R.id.answer_3_choice_4:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, "#3 Choice Four is checked!", Toast.LENGTH_SHORT).show();
-                    //else
-                    // What else to do
+                    Toast.makeText(this, R.string.not_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
-
-                // TODO:
         }
 
-        // Check which checkbox was clicked
+        // Check which checkbox checkboxes are clicked for Question 4
         switch (view.getId()) {
             case R.id.answer_4_choice_1:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, "#4 Choice One is checked!", Toast.LENGTH_SHORT).show();
-                    //else
-                    // What else to do
+                    Toast.makeText(this, R.string.is_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
             case R.id.answer_4_choice_2:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, "#4 Choice Two is checked!", Toast.LENGTH_SHORT).show();
-                    //else
-                    // What else to do
+                    Toast.makeText(this, R.string.is_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
             case R.id.answer_4_choice_3:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, "#4 Choice three is checked!", Toast.LENGTH_SHORT).show();
-                    //else
-                    // What else to do
+                    Toast.makeText(this, R.string.is_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
             case R.id.answer_4_choice_4:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, "#4 Choice Four is checked!", Toast.LENGTH_SHORT).show();
-                    //else
-                    // What else to do
+                    Toast.makeText(this, R.string.is_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
         }
     }
+
+    /* This method checks question #1
+    * @param pickedTrue is the user's choice for the right answer
+    * @return score is the score awarded for question number one
+    */
 
     private int checkQuestionOne(boolean pickedTrue) {
         int score = 0;
@@ -165,6 +159,11 @@ public class MainActivity extends AppCompatActivity {
         return score;
     }
 
+    /* This method checks question #2
+    * @param pickedChoiceThree is the user's choice for the right answer
+    * @return score is the score awarded for question number two
+    */
+
     private int checkQuestionTwo(boolean pickedChoiceThree) {
         int score = 0;
         if (pickedChoiceThree) {
@@ -172,6 +171,11 @@ public class MainActivity extends AppCompatActivity {
         }
         return score;
     }
+
+    /* This method checks question #3
+    * @param choiceTwo, choiceThree is the user's choice for the right answer
+    * @return score is the score awarded for question number three
+    */
 
     public int checkQuestionThree(boolean choiceTwo, boolean choiceThree) {
         int score = 0;
@@ -181,22 +185,16 @@ public class MainActivity extends AppCompatActivity {
         return score;
     }
 
+    /* This method checks question #4
+    * @param choiceOne, choiceTwo, choiceThree, choiceFour is the user's choice for the right answer
+    * @return score is the score awarded for question number four
+    */
+
     private int checkQuestionFour(boolean choiceOne, boolean choiceTwo, boolean choiceThree, boolean choiceFour) {
         int score = 0;
         if (choiceOne && choiceFour) {
             score += 1;
         }
         return score;
-    }
-
-    private int checkQuestionFive(String userInput) {
-        int score = 0;
-        score += 1;
-        return score;
-    }
-
-
-    private void createScoreMessage(int score) {
-
     }
 }
