@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Quiz App</string>
+    <string name="greeting_header">What do ye\' know about pirates?</string>
+    <string name="welcome_directions">Here\'s yar deerekshuns: </string>
     <string name="question_1">Six pounders loot fore heave down Cat o\'nine tails bilge water gaff boatswain parley splice the main brace?</string>
     <string name="answer_true">True</string>
     <string name="answer_false">False</string>

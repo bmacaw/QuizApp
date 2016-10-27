@@ -71,7 +71,12 @@ public class MainActivity extends AppCompatActivity {
         String ansFiveUserInput = ansFiveInput.getText().toString();
 
 
-        int totalScore = (checkQuestionOne(ansOnePickedTrue) + checkQuestionTwo(ansTwoPickedChoiceThree) + checkQuestionThree(ansThreePickedChoiceTwo, ansFourPickedChoiceThree) + checkQuestionFour(ansFourPickedChoiceOne, ansFourPickedChoiceTwo, ansFourPickedChoiceThree, ansFourPickedChoiceFour) + checkQuestionFive(ansFiveUserInput));
+        int totalScore = (checkQuestionOne(ansOnePickedTrue)
+                + checkQuestionTwo(ansTwoPickedChoiceThree)
+                + checkQuestionThree(ansThreePickedChoiceTwo, ansThreePickedChoiceThree)
+                + checkQuestionFour(ansFourPickedChoiceOne,
+                ansFourPickedChoiceTwo, ansFourPickedChoiceThree, ansFourPickedChoiceFour)
+                + checkQuestionFive(ansFiveUserInput));
         Toast.makeText(this, "You got " + totalScore + " out of 5 right!", Toast.LENGTH_LONG).show();
     }
 
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         // Check which checkbox was clicked
         switch (view.getId()) {
             case R.id.answer_3_choice_1:
+
                 if (checked) {
                     // What to do
                     Toast.makeText(this, "#3 Choice One is checked!", Toast.LENGTH_SHORT).show();
@@ -110,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     // What else to do
                     break;
                 }
+
                 // TODO:
         }
 
@@ -166,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         return score;
     }
 
-    private int checkQuestionThree(boolean choiceTwo, boolean choiceThree) {
+    public int checkQuestionThree(boolean choiceTwo, boolean choiceThree) {
         int score = 0;
         if (choiceTwo && choiceThree) {
             score += 1;
@@ -176,15 +183,16 @@ public class MainActivity extends AppCompatActivity {
 
     private int checkQuestionFour(boolean choiceOne, boolean choiceTwo, boolean choiceThree, boolean choiceFour) {
         int score = 0;
-        if (choiceOne && choiceTwo && choiceThree && choiceFour) {
+        if (choiceOne && choiceFour) {
             score += 1;
         }
         return score;
     }
 
-    private int checkQuestionFive(String ansFiveUserInput) {
+    private int checkQuestionFive(String userInput) {
         int score = 0;
-        return score +=1;
+        score += 1;
+        return score;
     }
 
 
