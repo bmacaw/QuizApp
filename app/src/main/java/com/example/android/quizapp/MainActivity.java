@@ -68,14 +68,17 @@ public class MainActivity extends AppCompatActivity {
         int totalScore = (checkQuestionOne(ansOnePickedTrue)
                 + checkQuestionTwo(ansTwoPickedChoiceThree)
                 + checkQuestionThree(ansThreePickedChoiceTwo, ansThreePickedChoiceThree)
-                + checkQuestionFour(ansFourPickedChoiceOne,
-                ansFourPickedChoiceTwo, ansFourPickedChoiceThree, ansFourPickedChoiceFour));
+                + checkQuestionFour(ansFourPickedChoiceOne, ansFourPickedChoiceFour));
         if (totalScore == 4) {
             // Feedback message to user
             Toast.makeText(this, "You got them all right, and a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
-        } else {
+        } else if (totalScore >= 1){
             // Feedback message to user
-            Toast.makeText(this, "You missed " + (4 - totalScore) + " questions, " + "\nbut a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "You missed " + (4 - totalScore) + ", " + "\nbut a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
+        }
+        else {
+            // Feedback message to user
+            Toast.makeText(this, "You missed them all, but a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
 
         }
 
@@ -128,13 +131,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.answer_4_choice_2:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, R.string.is_answer, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.not_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
             case R.id.answer_4_choice_3:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, R.string.is_answer, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.not_answer, Toast.LENGTH_SHORT).show();
                     break;
                 }
             case R.id.answer_4_choice_4:
@@ -190,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
     * @return score is the score awarded for question number four
     */
 
-    private int checkQuestionFour(boolean choiceOne, boolean choiceTwo, boolean choiceThree, boolean choiceFour) {
+    private int checkQuestionFour(boolean choiceOne, boolean choiceFour) {
         int score = 0;
         if (choiceOne && choiceFour) {
             score += 1;
