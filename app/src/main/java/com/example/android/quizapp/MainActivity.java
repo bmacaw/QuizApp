@@ -72,11 +72,10 @@ public class MainActivity extends AppCompatActivity {
         if (totalScore == 4) {
             // Feedback message to user
             Toast.makeText(this, "You got them all right, and a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
-        } else if (totalScore >= 1){
+        } else if (totalScore >= 1) {
             // Feedback message to user
-            Toast.makeText(this, "You missed " + (4 - totalScore) + ", " + "\nbut a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
-        }
-        else {
+            Toast.makeText(this, "You missed " + (4 - totalScore) + ", but a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
+        } else {
             // Feedback message to user
             Toast.makeText(this, "You missed them all, but a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
 
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*This switch sends Toasts to support the user for the Checkbox answers*/
+    /*This method creates Toasts to support the user for the Checkbox answers*/
 
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, R.string.not_answer, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.not_answer_one, Toast.LENGTH_LONG).show();
                     break;
                 }
 
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.answer_3_choice_4:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, R.string.not_answer, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.not_answer_four, Toast.LENGTH_LONG).show();
                     break;
                 }
         }
@@ -131,13 +130,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.answer_4_choice_2:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, R.string.not_answer, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.not_answer_two, Toast.LENGTH_LONG).show();
                     break;
                 }
             case R.id.answer_4_choice_3:
                 if (checked) {
                     // What to do
-                    Toast.makeText(this, R.string.not_answer, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.not_answer_three, Toast.LENGTH_LONG).show();
                     break;
                 }
             case R.id.answer_4_choice_4:
