@@ -24,7 +24,7 @@
     <string name="not_answer_two">No, but they have been known to recognize and shoot water at people they didn\'t like!</string>
     <string name="not_answer_three">No, but they have been known to make tools out of coconuts!</string>
     <string name="is_answer">Good job!</string>
-    <string name="question_5">Optional: What color would your pet octopus be??</string>
-    <string name="question_5_text_field_hint">Example: purple </string>
+    <string name="question_5">Which of the five senses is weakest in the octopus?</string>
+    <string name="question_5_text_field_hint">Enter here</string>
     <string name="submit_answers_button_text">Check Me!</string>
 </resources>

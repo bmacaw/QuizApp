@@ -2,7 +2,6 @@ package com.example.android.quizapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -67,18 +66,15 @@ public class MainActivity extends AppCompatActivity {
         // Total score
         int totalScore = (checkQuestionOne(ansOnePickedTrue)
                 + checkQuestionTwo(ansTwoPickedChoiceThree)
-                + checkQuestionThree(ansThreePickedChoiceTwo, ansThreePickedChoiceThree)
-                + checkQuestionFour(ansFourPickedChoiceOne, ansFourPickedChoiceFour));
-        if (totalScore == 4) {
+                + checkQuestionThree(ansThreePickedChoiceOne, ansThreePickedChoiceTwo, ansThreePickedChoiceThree, ansFourPickedChoiceFour)
+                + checkQuestionFour(ansFourPickedChoiceOne, ansFourPickedChoiceTwo, ansFourPickedChoiceThree, ansFourPickedChoiceFour)
+                + checkQuestionFive(ansFiveUserInput));
+        if (totalScore == 5) {
             // Feedback message to user
-            Toast.makeText(this, "You got them all right, and a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
-        } else if (totalScore >= 1) {
-            // Feedback message to user
-            Toast.makeText(this, "You missed " + (4 - totalScore) + ", but a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Congratulations! You got 5 out of 5 right!", Toast.LENGTH_SHORT).show();
         } else {
             // Feedback message to user
-            Toast.makeText(this, "You missed them all, but a " + ansFiveUserInput + " octopus would be amazing!", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, "You got " + totalScore + " out of 5 right!", Toast.LENGTH_LONG).show();
         }
 
 
@@ -156,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
     private int checkQuestionOne(boolean pickedTrue) {
         int score = 0;
         if (pickedTrue) {
-            score += 1;
+            score++;
         }
         return score;
     }
@@ -169,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
     private int checkQuestionTwo(boolean pickedChoiceThree) {
         int score = 0;
         if (pickedChoiceThree) {
-            score += 1;
+            score++;
         }
         return score;
     }
@@ -179,10 +175,14 @@ public class MainActivity extends AppCompatActivity {
     * @return score is the score awarded for question number three
     */
 
-    public int checkQuestionThree(boolean choiceTwo, boolean choiceThree) {
+    public int checkQuestionThree(boolean choiceOne, boolean choiceTwo, boolean choiceThree, boolean choiceFour) {
         int score = 0;
-        if (choiceTwo && choiceThree) {
-            score += 1;
+        if (!choiceTwo && !choiceThree) {
+            score = 0;
+        } else if (choiceOne && choiceFour) {
+            score = 0;
+        } else {
+            score++;
         }
         return score;
     }
@@ -192,10 +192,23 @@ public class MainActivity extends AppCompatActivity {
     * @return score is the score awarded for question number four
     */
 
-    private int checkQuestionFour(boolean choiceOne, boolean choiceFour) {
+    private int checkQuestionFour(boolean choiceOne, boolean choiceTwo, boolean choiceThree, boolean choiceFour) {
         int score = 0;
-        if (choiceOne && choiceFour) {
-            score += 1;
+        if (!choiceOne && !choiceFour) {
+            score = 0;
+        } else if (choiceTwo && choiceThree) {
+            score = 0;
+        } else {
+            score++;
+        }
+        return score;
+    }
+
+    private int checkQuestionFive(String userInput) {
+        String senseOfHearing = "hearing";
+        int score = 0;
+        if (senseOfHearing.equals(userInput)) {
+            score++;
         }
         return score;
     }
