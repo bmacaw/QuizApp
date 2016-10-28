@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         // Total score
         int totalScore = (checkQuestionOne(ansOnePickedTrue)
                 + checkQuestionTwo(ansTwoPickedChoiceThree)
-                + checkQuestionThree(ansThreePickedChoiceOne, ansThreePickedChoiceTwo, ansThreePickedChoiceThree, ansFourPickedChoiceFour)
+                + checkQuestionThree(ansThreePickedChoiceOne, ansThreePickedChoiceTwo, ansThreePickedChoiceThree, ansThreePickedChoiceFour)
                 + checkQuestionFour(ansFourPickedChoiceOne, ansFourPickedChoiceTwo, ansFourPickedChoiceThree, ansFourPickedChoiceFour)
                 + checkQuestionFive(ansFiveUserInput));
         if (totalScore == 5) {
@@ -177,11 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
     public int checkQuestionThree(boolean choiceOne, boolean choiceTwo, boolean choiceThree, boolean choiceFour) {
         int score = 0;
-        if (!choiceTwo && !choiceThree) {
-            score = 0;
-        } else if (choiceOne && choiceFour) {
-            score = 0;
-        } else {
+        if (!choiceOne && choiceTwo && choiceThree && !choiceFour) {
             score++;
         }
         return score;
@@ -194,20 +190,21 @@ public class MainActivity extends AppCompatActivity {
 
     private int checkQuestionFour(boolean choiceOne, boolean choiceTwo, boolean choiceThree, boolean choiceFour) {
         int score = 0;
-        if (!choiceOne && !choiceFour) {
-            score = 0;
-        } else if (choiceTwo && choiceThree) {
-            score = 0;
-        } else {
+        if (choiceOne && !choiceTwo && !choiceThree && choiceFour) {
             score++;
         }
         return score;
     }
 
+    /* This method checks question #5
+    * @param senseOfHearing is to store the correct answer for question number five
+    * @return score is the score awarded for question number five
+    */
+
     private int checkQuestionFive(String userInput) {
         String senseOfHearing = "hearing";
         int score = 0;
-        if (senseOfHearing.equals(userInput)) {
+        if (senseOfHearing.equalsIgnoreCase(userInput)) {
             score++;
         }
         return score;
